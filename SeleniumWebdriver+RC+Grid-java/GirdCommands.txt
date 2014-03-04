@@ -1,0 +1,189 @@
+java -jar selenium-server-standalone-2.37.0.jar -role webdriver -nodeConfig nodeconfig.json
+
+
+java -Dwebdriver.chrome.driver=D:\doc\Grid\chromedriver.exe -Dwebdriver.ie.driver=D:\doc\Grid\IEDriverServer.exe -jar selenium-server-standalone-2.37.0.jar -role node -nodeConfig nodeconfig.json
+
+
+
+java -jar selenium-server-standalone-2.37.0.jar -role webdriver -hub http://localhost:4444/grid/register -port 7575 -browser browserName=firefox,version=18,platform=WINDOWS
+
+java -Dwebdriver.ie.driver=D:\doc\Grid\IEDriverServer.exe -jar selenium-server-standalone-2.37.0.jar -role node -nodeConfig nodeconfig.json
+
+java -jar selenium-server-standalone-2.37.0.jar -role hub -hubConfig hubconfig.json
+
+
+particular xml in cmd:
+mvn clean -Dtests=NoPackageTest test
+
+
+
+//Reference 
+http://www.javatrainingprojects.com/JavaPrograms.htm
+
+
+//Maven Commands
+1.create a Maven structure based project 
+
+mvn archetype:generate -DgroupId={project-packaging} -DartifactId={project-name} -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+
+
+
+
+Feature	       JUnit 4	    TestNG
+
+test annotation	@Test	@Test
+run before all tests in this suite have run	Ð	@BeforeSuite
+run after all tests in this suite have run	Ð	@AfterSuite
+run before the test	Ð	@BeforeTest
+run after the test	Ð	@AfterTest
+run before the first test method that belongs to any of these groups is invoked	Ð	@BeforeGroups
+run after the last test method that belongs to any of these groups is invoked	Ð	@AfterGroups
+run before the first test method in the current class is invoked	@BeforeClass	@BeforeClass
+run after all the test methods in the current class have been run	@AfterClass	@AfterClass
+run before each test method	@Before	@BeforeMethod
+run after each test method	@After	@AfterMethod
+ignore test	@ignore	@Test(enbale=false)
+expected exception	@Test(expected = ArithmeticException.class)	@Test(expectedExceptions = ArithmeticException.class)
+timeout	@Test(timeout = 1000)	@Test(timeout = 1000)
+
+
+
+
+//// Selenium Qtions
+
+
+
+
+1.  What is webdriver?
+ WebDriver is a simpler, more concise programming interface in addition to addressing some limitations in  the Selenium-RC API. Selenium-WebDriver was developed to better support dynamic web pages where elements of a page may change without the page itself being reloaded. WebDriver’s goal is to supply a well-designed object-oriented API that provides improved support for modern advanced web-app testing problems.
+2.      What are the advantages of selenium2.0/webdriver?
+        Need no server to start
+    Easy to code
+        Has sophisticated API to support wide verity of browsers.
+    Supports to test dynamic UI web apps.
+
+3.      Difference between the selenium1.0 and selenium 2.0?
+Selenium 1.0
+Selenium 2.0/Webdriver
+1.      It ‘injected’ javascript functions into the browser when the browser was loaded and then used its javascript to drive the AUT within the browser.
+
+2.      Selenium server need to start to run tests
+3.      Has some loop-holes in supporting complex UI apps,Javascript security
+4.      No support for headless broswers
+1.      WebDriver makes direct calls to the browser using each browser’s native support for automation
+
+
+2.      Not needed unless tests are run on local machine.
+3.      Supports even drag and drop features and no security loop-holes
+4.      Supports htmlunit driver –headless browser runs fast
+
+
+
+4.      What are the Locators are there in selenium 2.0?
+It supports locators based on Id,name,xpath,dom,css,class,tagname
+5.      How to handle the Ajax Applications in Web driver?
+There are 2 types of waits webdriver supports to handle ajax applications to make webdrive sync to execution:
+Implicit wait :
+driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+Explicit wait:   WebDriverWait, FluentWait
+WebElement strr = (new WebDriverWait(driver,30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[starts-with(@id,'yui_3_4_0_1_137509')]/ul/li[2]/a")));
+
+This link explains better about handling ajax in webdriver.
+http://qeworks.com/handle-ajax-call-selenium-webdriver/
+
+5.      How to handle the multiple windows in web driver?
+            driver.switchTo().window(Window ID);
+
+6.      Difference between findelement() and findelements()?
+     findELement will find the first matching element.
+
+     findELements will all the matching elements. You'll probably need to loop through all the elements  returned.
+7.      How to handle the alerts in web driver?
+    driver.switchTo().alert().accept();
+ 
+8.      How to take the screen shots in seelnium2.0?
+            File src2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(src2,new File("d:\\sc2.jpeg"));
+9.      What is web driver architecture?
+Below link gives better idea of webdriver architecture:
+http://www.aosabook.org/en/selenium.html
+10.  What is the limitations of web driver?
+Can not automate desktop applications, supports only web applications
+ No inbuilt commands to generate good reports
+Cannot support readily for new browsers
+
+
+
+
+
+
+
+
+//// comman interview quesetions in selenium 
+
+
+
+-What class should be extended to use Serialization?
+-What is list and set?
+-what is hash table?
+-what is iterator?
+-Tell me about binary search?
+-Tell me about buble sort?
+-What is Selenium IDE
+-How can we do Iphone and Android app testing in selenium
+-What technical issues did you face in selenium 
+-What is Selenium RC and WebDriver. What is the difference in them (2)
+-How many ways can can start the selenium server (1)
+-How will you convert integer to String and String to integer in Java (1)
+-What do you mean by Object oriented programming. How is it used in selenium? (1)
+-how do you download and install selenium? (1)
+-Where do you write selenium code if you implement in java (1)
+-What all languages are supported by selenium (1) 
+-What is Murex testing? Do we use Selenium to test Murex? (3) 
+-How to Integrate Jenkins Hudson integration with selenium for running the scripts in schdule time? (6)
+-How to compare Text (not Html strings ) (2)
+-How to open csv file (1)
+-How to run webdriver scripts with different browsers 
+-How to do web service testing using selenium webdriver. 
+-How to identify webElement on web Page 
+-How to draw an annotation(s) on map using selenium webdriver?
+-how to handle list(selecting more than one item) in Rc and Webdriver 
+-how to handle filedownload in ie and chrome
+-How to handle silver light objects 
+-How to handles Popups! 
+
+-Interview Ques: How to extract data from webtable or weblist, store it in a file and sort the file
+
+-Is there Assert.assertNotEquals() in webdriver ?
+
+-Can we schedule the execution of test cases 
+-Do you any automation tool for desktop application testing? 
+-How to verify if the webElement is present or not on the webpage..??
+-what are reflection api and how are they used in selenium ?
+-How to schedule selenium suite using RC and WebDriver 
+-How to create a new file using Java 
+-How do you run your automated tests on Mutliple browsers
+-How to handle certification error
+-How would you deal with Ajax issues?
+-What is most difficult challenge you have faced in automating a web application
+-How to execute selenium webdriver tests after completion and deployment of build thru Jenkins?
+-Give two examples of functionality that cannot be properly tested with automated testing software?
+--List the advantage/disadvantages: Selenium WebDriver Vs QTP
+-What is inheritance in Java? How is it applied in Selenium? 
+-What are the drawbacks of Webdriver? 
+-Give me 5 points about what is the use of Framework (jUnit or TestNg) 
+-What is the difference between verify and Assert? 
+-How to run the test script in selenium on specific time?
+-What to do at very first if you want to start a Selenium automation tool in your project?
+-How do we keep expected result in the Seleniumj automation script?
+-What is the use of Class HtmlUnitDriver and when we have to use the Class HtmlUnitDriver 
+-can we handle windows popup using selenium?
+-There are 3 fields like House Number, Mobile Number and email address. How will you validate fields
+
+-What is the difference between client-server application and web application?
+-How can you test application in multiple browsers in selenium when making the framework 
+-How will you run 1000 test cases and generate reports
+-What are user extensions
+-What is difference between QTP and selenium
+-What is the architecture of selenium WebDriver
